@@ -1,0 +1,31 @@
+<div class="container" style="text-align: center">
+  <!-- Nested Row within Card Body -->
+  <div class="text-center">
+    <h1 class="h4 text-gray-900 mb-4">Registro de Asistencia</h1>
+  </div>
+  <form class="user">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nombre 1</th>
+          <th scope="col">Nombre 2</th>
+          <th scope="col">Apellido 1</th>
+          <th scope="col">Apellido 2</th>
+          <th scope="col">Asistencia</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let registro of empleados; let i = index">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ registro.nombre1 }}</td>
+          <td>{{ registro.nombre2 }}</td>
+          <td>{{ registro.apellido1 }}</td>
+          <td>{{ registro.apellido2 }}</td>
+          <td><input type="checkbox" /></td>
+        </tr>
+      </tbody>
+    </table>
+    <button class="btn btn-primary btn-user btn-block" (click)="registrarAsistencia()"> Registrar </button>
+  </form>
+</div>

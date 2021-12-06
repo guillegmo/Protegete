@@ -1,0 +1,292 @@
+<div class="container" style="text-align: center">
+    <br />
+    <!-- Nested Row within Card Body -->
+    <div class="text-center">
+      <h1 class="h4 text-gray-900 mb-4">Crear Usuario</h1>
+    </div>
+    <div class="row g-2">
+      <div class="col-md">
+        <div class="form-floating mb-3">
+          <input
+            type="number"
+            class="form-control"
+            id="floatingInput"
+            placeholder="numero Documento"
+            autofocus
+            [(ngModel)]="usuario.nit"
+          />
+          <label for="floatingInput">Nit</label>
+        </div>
+      </div>
+      <div class="col-md">
+        <label id="mensaje" *ngIf="mensaje"
+          >¡¡¡Registro Creado con exito!!!</label
+        >
+      </div>
+      <div class="col-md"></div>
+    </div>
+    <div class="row g-2">
+      <div class="col-md">
+        <div class="form-floating mb-3">
+          <input
+            type="text"
+            class="form-control"
+            id="floatingInput"
+            placeholder="Nombre Empresa"
+            [(ngModel)]="usuario.nombreEmpresa"
+          />
+          <label for="floatingInput">Nombre Empresa</label>
+        </div>
+      </div>
+      
+      <div class="col-md">
+        <div class="form-floating mb-3">
+          <input
+            type="text"
+            class="form-control"
+            id="floatingInput"
+            placeholder="Direccion"
+            [(ngModel)]="usuario.direccion"
+          />
+          <label for="floatingInput">Direccion</label>
+        </div>
+      </div>
+
+      <div class="col-md">
+        <div class="form-floating">
+          <input
+            type="text"
+            class="form-control"
+            id="floatingInput"
+            placeholder="Telefono"
+            [(ngModel)]="usuario.telefono"
+          />
+          <label for="floatingInput">Telefono</label>
+        </div>
+      </div>
+      
+    </div>
+    <div class="row g-2">      
+      <div class="col-md">
+        <div class="form-floating">
+          <input
+            type="email"
+            class="form-control"
+            id="floatingPassword"
+            placeholder="email / Usuario"
+            [(ngModel)]="usuario.email"
+          />
+          <label for="floatingInput">email / Usuario</label>
+        </div>
+      </div>
+    <div class="col-md">
+      <div class="col-md">
+        <div class="form-floating">
+          <input
+            type="password"
+            class="form-control"
+            id="floatingPassword"
+            placeholder="Password"
+            [(ngModel)]="usuario.password"
+          />
+          <label for="floatingInput">Password</label>
+        </div>
+      </div>
+    </div>  
+    <div class="col-md"></div>
+    <div class="row g-2">
+      <div class="col-md">
+        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" [(ngModel)]="usuario.tipoUsuario">
+            <option selected disabled>Tipo de Usuario</option>
+            <option>Interventor</option>
+            <option>Contratista</option>
+          </select>
+      </div>
+      <div class="col-md"></div>
+      <div class="col-md"></div>
+    </div>
+  </div>
+    <div>
+      <button
+        class="btn btn-primary btn-user btn-block"
+        (click)="crearUsuario()"
+      >
+        Crear Usuario
+      </button>
+    </div>
+  </div>
+
+  <div class="container">
+    
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Nit</th>
+            <th scope="col">Nombre Empresa</th>
+            <th scope="col">Email/Usuario</th>
+            <th scope="col">Tipo Usuario</th>
+            <th scope="col">Editar/Eliminar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let registro of usuarios">
+            <td>{{ registro.nit }}</td>
+            <td>{{ registro.nombreEmpresa }}</td>
+            <td>{{ registro.email }}</td>
+            <td>{{ registro.tipoUsuario }}</td>
+            <td>          
+              
+              <button class="btn btn success" (click)= "openXL(actualizarEmpleado)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: green;transform: msFilter"><path d="m7 17.013 4.413-.015 9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583v4.43zM18.045 4.458l1.589 1.583-1.597 1.582-1.586-1.585 1.594-1.58zM9 13.417l6.03-5.973 1.586 1.586-6.029 5.971L9 15.006v-1.589z"></path><path d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2z"></path></svg></button>
+
+              <ng-template #actualizarEmpleado let-modal>
+                <div class="modal-header">
+                  <h2 class="modal-title" id="exampleModalLabel">Actualizar Empleado</h2>
+                  <button type="button" class="btn-close" aria-label="Close" (click)="arreglo([
+                  registro.idUsuario, 
+                  registro.nit,
+                  registro.nombreEmpresa,
+                  registro.direccion,
+                  registro.telefono,
+                  registro.email,
+                  registro.password,
+                  registro.tipoUsuario,
+                  ])"></button>
+                </div>
+                <div class="modal-body">
+    
+                  <div class="container">
+    
+                    <div class="container" style="text-align: center">
+                      <br>
+                      <!-- Nested Row within Card Body -->
+                      <div class="row g-2">
+                        <div class="col-md">
+                          <div class="form-floating mb-3">
+                            <input
+                              
+                              type="number"
+                              class="form-control"
+                              id="floatingInput"
+                              placeholder="Id Usuario"
+                              autofocus
+                              [(ngModel)]="registro.idUsuario"
+                              disabled
+                            />
+                            <label for="floatingInput">Id Usuario</label>
+                          </div>
+                        </div>
+                        <div class="col-md" style="text-align: left">
+                          
+                        </div>
+                        <div class="col-md"></div>
+                        <div class="col-md"></div>
+                      </div>
+                      <div class="row g-2">
+                        <div class="col-md">
+                          <div class="form-floating mb-3">
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="floatingInput"
+                              placeholder="Nit"
+                              [(ngModel)]="registro.nit"
+                            />
+                            <label for="floatingInput">Nit</label>
+                          </div>
+                        </div>
+                        <div class="col-md">
+                          <div class="form-floating">
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="floatingPassword"
+                              placeholder="Nombre Empresa"
+                              [(ngModel)]="registro.nombreEmpresa"
+                            />
+                            <label for="floatingInput">Nombre Empresa</label>
+                          </div>
+                        </div>
+                        <div class="col-md">
+                          <div class="form-floating mb-3">
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="floatingInput"
+                              placeholder="Direccion"
+                              [(ngModel)]="registro.direccion"
+                            />
+                            <label for="floatingInput">Direccion</label>
+                          </div>
+                        </div>
+                        <div class="col-md">
+                          <div class="form-floating">
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="floatingPassword"
+                              placeholder="Telefono"
+                              [(ngModel)]="registro.telefono"
+                            />
+                            <label for="floatingInput">Telefono</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row g-2">
+                        <div class="col-md">
+                          <div class="form-floating mb-3">
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="floatingInput"
+                              placeholder="Email / Usuario"
+                              [(ngModel)]="registro.email"
+                            />
+                            <label for="floatingInput">Email / Usuario</label>
+                          </div>
+                        </div>
+                        <div class="col-md">
+                          <div class="form-floating">
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="floatingPassword"
+                              placeholder="Password"
+                              [(ngModel)]="registro.password"
+                            />
+                            <label for="floatingInput">Password</label>
+                          </div>
+                        </div>
+                        <div class="col-md">
+                          <div class="col-md">
+                            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" [(ngModel)]="registro.tipoUsuario">
+                                <option selected disabled>Tipo de Usuario</option>
+                                <option>Interventor</option>
+                                <option>Contratista</option>
+                              </select>
+                          </div>
+                        </div>
+                        <div class="col-md"></div>
+                      </div>
+                    
+                      <button class="btn btn-primary btn-user btn-block" (click)="arreglo([
+                      registro.idUsuario, 
+                      registro.nit,
+                      registro.nombreEmpresa,
+                      registro.direccion,
+                      registro.telefono,
+                      registro.email,
+                      registro.password,
+                      registro.tipoUsuario,
+                      ])">Actualizar</button>
+                    </div>               
+                  </div>
+                 
+                </div>
+              </ng-template>
+
+              <button class="btn btn danger" (click)="eliminarUsuario(registro.idUsuario)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" style="fill: red;transform: msFilter"><path d="M5 20a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8h2V6h-4V4a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v2H3v2h2zM9 4h6v2H9zM8 8h9v12H7V8z"></path><path d="M9 10h2v8H9zm4 0h2v8h-2z"></path></svg></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+</div> 

@@ -1,0 +1,17 @@
+#bodyLista{
+    max-height: 60vh;
+    overflow-y: auto;
+    height: 100vh;    
+}
+
+label{
+    text-decoration: none;
+    color: #4e73df;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+label:hover{
+    color: #35f5bb;
+    font-weight: bold;
+}

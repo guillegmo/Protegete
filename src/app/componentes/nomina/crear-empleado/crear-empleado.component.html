@@ -1,0 +1,265 @@
+<div class="container" style="text-align: center">
+  <br>
+  <!-- Nested Row within Card Body -->
+  <div class="text-center">
+    <h1 class="h4 text-gray-900 mb-4">Crear Empleado</h1>
+  </div>
+  <div class="row g-2">
+    <div class="col-md">
+      <div class="form-floating mb-3">
+        <input
+          type="number"
+          class="form-control"
+          id="floatingInput"
+          placeholder="numero Documento"
+          autofocus
+          [(ngModel)]="empleado.idEmpleado"
+        />
+        <label for="floatingInput">Numero Documento</label>
+      </div>
+    </div>
+    <div class="col-md" style="text-align: left">
+      <button class="btn btn-primary">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          style="fill: white; transform: msFilter"
+        >
+          <path
+            d="M10 18a7.952 7.952 0 0 0 4.897-1.688l4.396 4.396 1.414-1.414-4.396-4.396A7.952 7.952 0 0 0 18 10c0-4.411-3.589-8-8-8s-8 3.589-8 8 3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6-6-2.691-6-6 2.691-6 6-6z"
+          ></path>
+        </svg>
+      </button>
+    </div>
+    <div class="col-md"> <label id="mensaje" *ngIf="mensaje">¡¡¡Empleado Creado con exito!!!</label> </div>
+    <div class="col-md"></div>
+  </div>
+  <div class="row g-2">
+    <div class="col-md">
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="floatingInput"
+          placeholder="Nombre 1"
+          [(ngModel)]="empleado.nombre1"
+        />
+        <label for="floatingInput">Nombre 1</label>
+      </div>
+    </div>
+    <div class="col-md">
+      <div class="form-floating">
+        <input
+          type="text"
+          class="form-control"
+          id="floatingPassword"
+          placeholder="Nombre 2"
+          [(ngModel)]="empleado.nombre2"
+        />
+        <label for="floatingInput">Nombre 2</label>
+      </div>
+    </div>
+    <div class="col-md">
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="floatingInput"
+          placeholder="Apellido 1"
+          [(ngModel)]="empleado.apellido1"
+        />
+        <label for="floatingInput">Apellido 1</label>
+      </div>
+    </div>
+    <div class="col-md">
+      <div class="form-floating">
+        <input
+          type="text"
+          class="form-control"
+          id="floatingPassword"
+          placeholder="Apellido 2"
+          [(ngModel)]="empleado.apellido2"
+        />
+        <label for="floatingInput">Apellido 2</label>
+      </div>
+    </div>
+  </div>
+  <div class="row g-2">
+    <div class="col-md">
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="floatingInput"
+          placeholder="Direccion"
+          [(ngModel)]="empleado.direccion"
+        />
+        <label for="floatingInput">Direccion</label>
+      </div>
+    </div>
+    <div class="col-md">
+      <div class="form-floating">
+        <input
+          type="text"
+          class="form-control"
+          id="floatingPassword"
+          placeholder="Ciudad Residencia"
+          [(ngModel)]="empleado.ciudadResidencia"
+        />
+        <label for="floatingInput">Ciudad Residencia</label>
+      </div>
+    </div>
+    <div class="col-md">
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="floatingInput"
+          placeholder="Telefono"
+          [(ngModel)]="empleado.telefono"
+        />
+        <label for="floatingInput">Telefono</label>
+      </div>
+    </div>
+    <div class="col-md">
+      <div class="form-floating">
+        <input
+          type="email"
+          class="form-control"
+          id="floatingPassword"
+          placeholder="email"
+          [(ngModel)]="empleado.email"
+        />
+        <label for="floatingInput">email</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="row g-2">
+    <div class="col-md">
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="floatingInput"
+          placeholder="EPS"
+          [(ngModel)]="empleado.EPS"
+        />
+        <label for="floatingInput">EPS</label>
+      </div>
+    </div>
+    <div class="col-md">
+      <div class="form-floating">
+        <input
+          type="text"
+          class="form-control"
+          id="floatingPassword"
+          placeholder="ARL"
+          [(ngModel)]="empleado.ARL"
+        />
+        <label for="floatingInput">ARL</label>
+      </div>
+    </div>
+    <div class="col-md">
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="floatingInput"
+          placeholder="Fondo Pensiones"
+          [(ngModel)]="empleado.fondoPension"
+        />
+        <label for="floatingInput">Fondo Pensiones</label>
+      </div>
+    </div>
+    <div class="col-md">
+      <div class="form-floating">
+        <input
+          type="text"
+          class="form-control"
+          id="floatingPassword"
+          placeholder="Fondo Cesantias"
+          [(ngModel)]="empleado.fondoCesantias"
+        />
+        <label for="floatingInput">Fondo Cesantias</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="row g-2">
+    <div class="col-md">
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="floatingInput"
+          placeholder="Caja de Compensacion"
+          [(ngModel)]="empleado.cajaCompensacion"
+        />
+        <label for="floatingInput">Caja de Compensacion</label>
+      </div>
+    </div>
+    <div class="col-md">
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="floatingInput"
+          placeholder="Cargo"
+          [(ngModel)]="empleado.cargo"
+        />
+        <label for="floatingInput">Cargo</label>
+      </div>
+    </div>
+    <div class="col-md">
+      <div class="form-floating">
+        <input
+          type="text"
+          class="form-control"
+          id="floatingPassword"
+          placeholder="Profesion"
+          [(ngModel)]="empleado.profesion"
+        />
+        <label for="floatingInput">Profesion</label>
+      </div>
+    </div>
+    <div class="col-md">
+      <div class="form-floating mb-3">
+        <input
+          type="number"
+          class="form-control"
+          id="floatingInput"
+          placeholder="Salario"
+          [(ngModel)]="empleado.salario"
+        />
+        <label for="floatingInput">Salario</label>
+      </div>
+    </div>    
+  </div>
+
+  <div class="row g-2">
+    <div class="col-md">
+      <div class="form-floating">
+        <input
+          type="date"
+          class="form-control"
+          id="floatingPassword"
+          placeholder="Fecha Ingreso"
+          [(ngModel)]="empleado.fechaIngreso">        
+        <label for="floatingInput">fecha Ingreso</label>
+      </div>
+    </div>
+    <div class="col"></div>
+    <div class="col"></div>
+    <div class="col"></div>
+  </div>
+
+  <button
+    class="btn btn-primary btn-user btn-block"
+    (click)="agregarEmpleado()"
+  >
+    Crear Empleado
+  </button>
+</div>

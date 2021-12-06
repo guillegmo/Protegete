@@ -1,0 +1,33 @@
+a {
+    text-decoration: none;
+  }
+
+.collapse-item{
+  padding: .5rem 1rem;
+  margin: 0 .5rem;
+  display: block;
+}
+
+.collapse-item:hover{
+  background:rgb(179, 235, 252);
+  border-radius: .35rem;
+  color: black;
+ }
+
+ mat-expansion-panel-header{
+   background: #4e73df;
+ }
+
+ mat-panel-title{
+   color: white;
+ }
+ 
+ mat-expansion-panel{
+   background:#7c99f1;
+   border: 1px solid white;
+   margin: 2px;
+ }
+
+ .fuente{
+   color: white;
+ }

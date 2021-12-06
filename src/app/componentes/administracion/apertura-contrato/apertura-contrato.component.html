@@ -1,0 +1,179 @@
+<br>
+<div class="container">
+    <div style="text-align:center;">
+        <h1><strong>Apertura de Contrato</strong></h1>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col">
+            <select class="form-select" aria-label="Default select example" [(ngModel)]="select">
+                <option selected>Tipo de Contrato</option>
+                <option>Privado</option>
+                <option>Publico</option>
+            </select>        
+        </div>
+        <div class="col">
+            <select class="form-select" aria-label="Default select example" *ngIf="select=='Publico'">
+                <option selected>Tipo de Contrato</option>
+                <option>Minima Cuentia</option>
+                <option>Mayor cuantia</option>
+                <option>Meritos</option>
+                <option>Seleccion Abreviada</option>
+                <option>Contratacion Directa</option>
+              </select> 
+        </div>
+        <div class="col"></div>
+        <div class="col"></div>
+    </div>
+    <br>
+
+    <div class="row">
+        <div class="col">
+            <div class="form-floating mb-3">
+                <input
+                  type="string"
+                  class="form-control"
+                  id="floatingInput"
+                  placeholder="Indentificacion del Contrato"
+                  [(ngModel)]="identificacionContrato"
+                />
+                <label for="floatingInput">Indentificacion del Contrato</label>
+              </div>
+        </div>
+        <div class="col"></div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <p><strong>Nit Empresa Contratante: </strong>999.321.321</p>
+        </div>
+        <div class="col">
+            <p><strong>Nombre de la Empresa Contratante: </strong>Construcciones Prueba SAS</p>
+        </div>       
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <p><strong>Nit Empresa Interventora: </strong>900.123.123</p>
+        </div>
+        <div class="col">
+            <p><strong>Nombre de la Empresa Interventora: </strong>Interventoria Prueba SAS</p>
+        </div>       
+    </div>  
+    <div class="row">
+        <div class="col">
+            <p><strong>Nit Empresa Contratista: </strong>800.890.123</p>
+        </div>
+        <div class="col">
+            <p><strong>Nombre de la Empresa Contratista: </strong>Contratista Prueba SAS</p>
+        </div>       
+    </div>  
+    <br>
+    <div class="row">
+        <div class="col">
+            <div class="form-floating mb-3">
+                <input
+                  type="string"
+                  class="form-control"
+                  id="floatingInput"
+                  placeholder="Lugar de Ubicacion"
+                  [(ngModel)]="ubicacion"
+                />
+                <label for="floatingInput">Lugar de Ubicacion</label>
+              </div> 
+              <div class="col">
+                <div class="form-floating mb-3">
+                    <input
+                      type="string"
+                      class="form-control"
+                      id="floatingInput"
+                      placeholder="Pais"
+                      [(ngModel)]="pais"
+                    />
+                    <label for="floatingInput">Pais</label>
+                  </div> 
+            </div>   
+            <div class="col">
+                <div class="form-floating mb-3">
+                    <input
+                      type="string"
+                      class="form-control"
+                      id="floatingInput"
+                      placeholder="Departamento"
+                      [(ngModel)]="dpto"
+                    />
+                    <label for="floatingInput">Departamento</label>
+                  </div> 
+            </div>    
+            <div class="col">
+                <div class="form-floating mb-3">
+                    <input
+                      type="string"
+                      class="form-control"
+                      id="floatingInput"
+                      placeholder="Ciudad"
+                      [(ngModel)]="ciudad"
+                    />
+                    <label for="floatingInput">Ciudad</label>
+                </div> 
+            </div>           
+              <div class="col">
+                <p><strong>Valor de Contrato: </strong><input type="string" [(ngModel)]="valorContrato"></p>
+            </div>  
+            <div class="col">
+                <p><strong>Plazo de Contrato: </strong><input type="string" [(ngModel)]="duracion"></p>
+            </div>
+            <div class="form-floating mb-3">
+                <input
+                  type="date"
+                  class="form-control"
+                  id="floatingInput"
+                  placeholder="Fecha Iniciacion"
+                  [(ngModel)]="fechaInicio"
+                />
+                <label for="floatingInput">Fecha Iniciacion</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input
+                  type="date"
+                  class="form-control"
+                  id="floatingInput"
+                  placeholder="Fecha Finalizacion"
+                  [(ngModel)]="fechaFin"
+                />
+                <label for="floatingInput">Fecha Finalizacion</label>
+            </div>
+        </div>
+        <div class="col" >
+            <div class="card" style="width: 18rem; text-align: center; border-color: aqua;" *ngIf="ubicacion!=''">
+                <img src="\assets\satelital.JPG" class="card-img-top" alt="...">
+            </div>
+            <br>
+            <div>
+                <label for="formFileLg" class="form-label"><Strong>Adjuntar Contrato Fisico</Strong></label>
+                <input class="form-control form-control-lg" id="formFileLg" type="file" [(ngModel)]="confirmarBotonGuardar"> 
+            </div>
+            <br>
+            <div style="text-align: center;" *ngIf="confirmarBotonGuardar!=''">
+                <button class="btn btn-primary" (click)= "openSM(mensajeGuardar)">Guardar</button>
+
+                <ng-template #mensajeGuardar let-modal>
+                    <div class="modal-header">
+                      <h2 class="modal-title" id="exampleModalLabel">Mensaje Informativo</h2>
+                      <button type="button" class="btn-close" aria-label="Close" (click)="cerrarModal()"></button>
+                    </div>
+                    <div class="modal-body">
+                      
+                        <p>El contrato {{ identificacionContrato }} se ha guardado con exito</p>
+                    
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-success" (click)="cerrarModal()">Cerrar</button>
+                    </div>
+                  </ng-template>
+
+            </div>
+        </div>
+    </div>    
+
+</div>

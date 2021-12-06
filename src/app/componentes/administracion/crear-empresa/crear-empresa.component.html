@@ -1,0 +1,541 @@
+<div class="container" style="text-align: center">
+  <br />
+  
+  <div class="text-center">
+    <h1 class="h4 text-gray-900 mb-4">Crear Empresa</h1>
+  </div>
+  <hr>
+
+  <div class="row">
+    <div class="col">
+      <select class="form-select mb-3" id="tipoContribuyente" [(ngModel)]="tipoContribuyente" autofocus>
+        <option selected>Tipo de Contribuyente</option>
+        <option>Persona Juridica</option>
+        <option>Persona Natural</option>
+        <option></option>
+      </select> 
+    </div>
+    <div class="col">
+      <div class="col">
+        <select class="form-select mb-3" id="tipoEmpresa">
+          <option selected>Tipo de Empresa</option>
+          <option>Contratante</option>
+          <option>Interventora</option>
+          <option>Contratista</option>
+        </select> 
+      </div>
+    </div>
+    <div class="col">
+      <div class="col">
+        <div class="form-floating mb-3">
+          <input
+            type="number"
+            class="form-control"
+            id="nit"
+            placeholder="Nit"            
+          />
+          <label for="floatingInput">Nit</label>
+        </div>
+      </div>   
+    </div>
+  </div>
+
+  <div class="row" *ngIf="tipoContribuyente=='Persona Natural'">
+    <div class="col">
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="nombre1"
+          placeholder="Nombre 1"
+        />
+        <label for="floatingInput">Nombre 1</label>
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="nombre2"
+          placeholder="Nombre 2"
+        />
+        <label for="floatingInput">Nombre 2</label>
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="apellido1"
+          placeholder="Apellido 1"
+        />
+        <label for="floatingInput">Apellido 1</label>
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="apellido2"
+          placeholder="Apellido 2"
+        />
+        <label for="floatingInput">Apellido 2</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="nombreEmpresa"
+          placeholder="Nombre Empresa"
+        />
+        <label for="floatingInput">Nombre Empresa</label>
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-floating">
+        <input
+          type="text"
+          class="form-control"
+          id="direccion"
+          placeholder="Direccion"
+        />
+        <label for="floatingInput">Direccion</label>
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="ciudad"
+          placeholder="Ciudad"
+        />
+        <label for="floatingInput">Ciudad</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">    
+    <div class="col">
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="telefono1"
+          placeholder="Telefono 1"
+        />
+        <label for="floatingInput">Telefono 1</label>
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="telefono2"
+          placeholder="Telefono 2"
+        />
+        <label for="floatingInput">Telefono 2</label>
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-floating mb-3">
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          placeholder="Email"
+        />
+        <label for="floatingInput">Email</label>
+      </div>
+    </div>
+    <div class="col">
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          id = "#RepresentanteLegal"
+          class="form-control"
+          placeholder="Representante Legal"
+          [(ngModel)]="numeroRepresentanteLegal"
+        />
+        <button
+          class="btn btn-outline-primary"
+          type="button"
+          id="button-addon2"
+          (click)="openXL(representanteLegal)"
+        >
+          Agregar
+        </button>
+
+        <ng-template #representanteLegal let-modal>
+          <div class="modal-header">
+            <h2 class="modal-title" id="actividad-secundaria">Crear Representente Legal</h2>
+            <button type="button" class="btn-close" aria-label="Close" (click)="cerrarModal()"></button>
+          </div>
+          <div class="form-floating mb-3">
+            <div class="modal-body">          
+              
+              <div class="row g-2">
+                <div class="col-md">
+                  <div class="form-floating mb-3">
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="numeroDocumentoRepresentanteLegal"
+                      placeholder="numero Documento"
+                      [(ngModel)]="numeroRepresentanteLegal"
+                      disabled
+                    />
+                    <label for="floatingInput">Numero Documento</label>
+                  </div>
+                </div>
+                <div class="col-md"></div>
+                <div class="col-md"></div>
+                <div class="col-md"></div>
+              </div>
+              <div class="row g-2">
+                <div class="col-md">
+                  <div class="form-floating mb-3">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="nombre1RepresentanteLegal"
+                      placeholder="Nombre 1"
+                      [(ngModel)]="representanteL.nombre1"
+                    />
+                    <label for="floatingInput">Nombre 1</label>
+                  </div>
+                </div>
+                <div class="col-md">
+                  <div class="form-floating">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="nombre2RepresentanteLegal"
+                      placeholder="Nombre 2"
+                      [(ngModel)]="representanteL.nombre2"
+                    />
+                    <label for="floatingInput">nombre 2</label>
+                  </div>
+                </div>
+                <div class="col-md">
+                  <div class="form-floating mb-3">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="apellido1RepresentanteLegal"
+                      placeholder="Apellido 1"
+                      [(ngModel)]="representanteL.apellido1"
+                    />
+                    <label for="floatingInput">Apellido 1</label>
+                  </div>
+                </div>
+                <div class="col-md">
+                  <div class="form-floating">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="apellido2RepresentanteLegal"
+                      placeholder="Apellido 2"
+                      [(ngModel)]="representanteL.apellido2"
+                    />
+                    <label for="floatingInput">Apellido 2</label>
+                  </div>
+                </div>
+              </div>
+              <div class="row g-2">
+                <div class="col-md">
+                  <div class="form-floating mb-3">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="direccionRepresentanteLegal"
+                      placeholder="Direccion"
+                      [(ngModel)]="representanteL.direccion"
+                    />
+                    <label for="floatingInput">Direccion</label>
+                  </div>
+                </div>
+                <div class="col-md">
+                  <div class="form-floating">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="telefono1RepresentanteLegal"
+                      placeholder="Telefono 1"
+                      [(ngModel)]="representanteL.telefono1"
+                    />
+                    <label for="floatingInput">Telefono 1</label>
+                  </div>
+                </div>
+                <div class="col-md">
+                  <div class="form-floating">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="telefono2RepresentanteLegal"
+                      placeholder="Telefono 2"
+                      [(ngModel)]="representanteL.telefono2"
+                    />
+                    <label for="floatingInput">Telefono 2</label>
+                  </div>
+                </div>
+                <div class="col-md">
+                  <div class="form-floating">
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="emailRepresentanteLegal"
+                      placeholder="email"
+                      [(ngModel)]="representanteL.email"
+                    />
+                    <label for="floatingInput">email</label>
+                  </div>
+                </div>
+            </div>
+              <div style="text-align: center;">
+                <div *ngIf="botonRepresentante == 'crear'">
+                  <button class="btn btn-primary btn-user btn-block" (click)="agregarRepresentanteLegal()">
+                    Crear Representante
+                  </button>
+                </div>
+                <div *ngIf="botonRepresentante == 'modificar'">
+                  <button class="btn btn-primary btn-user btn-block" (click)="actualizarRepresentanteLegal()">
+                    Ok
+                  </button>  
+                </div>                           
+              </div>
+            </div>
+          </div>
+        </ng-template>
+
+      </div>
+    </div>
+  </div>
+  <div>
+    <button class="btn btn-primary btn-user btn-block" id="botonCrearEmpresa" (click)="agregarCrearEmpresa()" >Crear Empresa</button>
+  </div>
+</div>
+
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Nit</th>
+        <th scope="col">Nombre Empresa</th>
+        <th scope="col">Tipo de Empresa</th>
+        <th scope="col">Email</th>
+        <th scope="col">Editar / Eliminar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let registro of crearEmpresas">
+        <td>{{ registro.nit }}</td>
+        <td>{{ registro.nombreEmpresa }}</td>
+        <td>{{ registro.tipoEmpresa }}</td>
+        <td>{{ registro.email }}</td>
+        <td>
+          <button class="btn btn success" (click)="openXL2(modalCrearEmpresa, registro.nit)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: green;transform: msFilter"><path d="m7 17.013 4.413-.015 9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583v4.43zM18.045 4.458l1.589 1.583-1.597 1.582-1.586-1.585 1.594-1.58zM9 13.417l6.03-5.973 1.586 1.586-6.029 5.971L9 15.006v-1.589z"></path><path d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2z"></path></svg></button>
+          <ng-template #modalCrearEmpresa let-modal>
+            <div class="modal-header">
+              <h2 class="modal-title" id="actividad-secundaria">Modifica Empresa</h2>
+              <button type="button" class="btn-close" aria-label="Close" (click)="cerrarModalActualizarEmpresa()"></button>
+            </div>
+            <div class="form-floating mb-3">
+              <div class="modal-body"> 
+                <div class="row">
+                  <div class="col">
+                    <select class="form-select mb-3" id="tipoContribuyenteModal" [(ngModel)]="tipoContribuyenteCadena">
+                      <option selected>Tipo de Contribuyente</option>
+                      <option>Persona Juridica</option>
+                      <option>Persona Natural</option>
+                      <option></option>
+                    </select> 
+                  </div>
+                  <div class="col">
+                    <div class="col">
+                      <select class="form-select mb-3" id="tipoEmpresaModal" [(ngModel)]="tipoEmpresaCadena">
+                        <option selected>Tipo de Empresa</option>
+                        <option>Contratante</option>
+                        <option>Interventora</option>
+                        <option>Contratista</option>
+                      </select> 
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="col">
+                      <div class="form-floating mb-3">
+                        <input
+                          type="number"
+                          class="form-control"
+                          id="nitModal"
+                          placeholder="Nit"
+                          [(ngModel)]="nitCadena" 
+                          disabled   
+                        />
+                        <label for="floatingInput">Nit</label>
+                      </div>
+                    </div>   
+                  </div>
+                </div>
+              
+                <div class="row" *ngIf="tipoContribuyenteCadena == 'Persona Natural'">
+                  <div class="col">
+                    <div class="form-floating mb-3">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="nombre1Modal"
+                        placeholder="Nombre 1"
+                        [(ngModel)]="nombre1Cadena"
+                      />
+                      <label for="floatingInput">Nombre 1</label>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-floating mb-3">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="nombre2Modal"
+                        placeholder="Nombre 2"
+                        [(ngModel)]="nombre2Cadena"
+                      />
+                      <label for="floatingInput">Nombre 2</label>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-floating mb-3">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="apellido1Modal"
+                        placeholder="Apellido 1"
+                        [(ngModel)]="apellido1Cadena"
+                      />
+                      <label for="floatingInput">Apellido 1</label>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-floating mb-3">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="apellido2Modal"
+                        placeholder="Apellido 2"
+                        [(ngModel)]="apellido2Cadena"
+                      />
+                      <label for="floatingInput">Apellido 2</label>
+                    </div>
+                  </div>
+                </div>
+              
+                <div class="row">
+                  <div class="col">
+                    <div class="form-floating mb-3">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="nombreEmpresaModal"
+                        placeholder="Nombre Empresa"
+                        [(ngModel)]="nombreEmpresaCadena"
+                      />
+                      <label for="floatingInput">Nombre Empresa</label>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-floating">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="direccionModal"
+                        placeholder="Direccion"
+                        [(ngModel)]="direccionCadena"
+                      />
+                      <label for="floatingInput">Direccion</label>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-floating mb-3">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="ciudadModal"
+                        placeholder="Ciudad"
+                        [(ngModel)]="ciudadCadena"
+                      />
+                      <label for="floatingInput">Ciudad</label>
+                    </div>
+                  </div>
+                </div>
+              
+                <div class="row">    
+                  <div class="col">
+                    <div class="form-floating mb-3">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="telefono1Modal"
+                        placeholder="Telefono 1"
+                        [(ngModel)]="telefono1Cadena"
+                      />
+                      <label for="floatingInput">Telefono 1</label>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-floating mb-3">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="telefono2Modal"
+                        placeholder="Telefono 2"
+                        [(ngModel)]="telefono2Cadena"
+                      />
+                      <label for="floatingInput">Telefono 2</label>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-floating mb-3">
+                      <input
+                        type="email"
+                        class="form-control"
+                        id="emailModal"
+                        placeholder="Email"
+                        [(ngModel)]="emailCadena"
+                      />
+                      <label for="floatingInput">Email</label>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-floating mb-3">
+                      <input
+                        type="number"
+                        class="form-control"
+                        id="representanteLegalModal"
+                        placeholder="Representante Legal"
+                        [(ngModel)]="representanteLegalCadena"
+                      />
+                      <label for="floatingInput">Representante Legal</label>
+                    </div>
+                  </div>
+                </div>
+                <div style="text-align:center">
+                  <button class="btn btn-primary" (click)="actualizarEmpresa()">Editar</button>
+                </div>        
+              </div>
+            </div>
+          </ng-template>
+          <button class="btn btn danger" (click)="eliminarEmpresa(registro.nit)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" style="fill: red;transform: msFilter"><path d="M5 20a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8h2V6h-4V4a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v2H3v2h2zM9 4h6v2H9zM8 8h9v12H7V8z"></path><path d="M9 10h2v8H9zm4 0h2v8h-2z"></path></svg></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

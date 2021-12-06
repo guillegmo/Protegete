@@ -1,0 +1,51 @@
+<div id="centrar" *ngIf="log">  
+<div class="card" id="tarjeta">
+  <h1>Protegete</h1>  
+  <form id="formulario">
+    <div class="mb-3">
+      <strong><label class="form-label" 
+        >Usuario</label
+      ></strong>
+      <input
+        type="text"
+        class="form-control"
+        name = "usuario"
+        placeholder="Usuario"
+        ngModel
+        required
+        size="20"
+        [(ngModel)] = "usuario"
+      />
+    </div>
+    <div class="mb-3">
+      <strong><label for="exampleDropdownFormPassword2" class="form-label"
+        >Password</label
+      ></strong>
+      <input
+        type="password"
+        class="form-control"
+        name="password"        
+        placeholder="Password"
+        ngModel
+        required
+        size="20"
+        [(ngModel)]="password"
+      />
+    </div>
+    <div >
+    <button type="submit" class="btn btn-primary" (click)="login()">Ingresar</button>
+  </div>
+  <br>
+  <div>
+    <p>{{ mensaje }}</p>
+  </div>
+  </form>
+</div>
+</div>
+
+<div *ngIf="visible">
+  <app-contenedor
+  [tipoUsuario] = "usuario"
+  >
+</app-contenedor>
+</div>

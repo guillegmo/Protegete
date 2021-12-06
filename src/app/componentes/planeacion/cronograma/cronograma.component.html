@@ -1,0 +1,220 @@
+<br />
+<div>
+  <div class="container">
+    <div style="text-align: center">
+      <h1><strong>Cronograma de Actividades</strong></h1>
+    </div>
+    <hr> 
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <h2>Codigo Actividad Principal</h2>
+        </div>
+        <div class="col">
+          <input type="number" class="form-control" autofocus id="codigoActividadPrincipal" [(ngModel)]="actividadPrincipalCadena" (keyup.enter)="obtenerActividadPrincipal()">
+        </div>
+        <div class="col">
+          <input type="text" class="form-control" id="nombreActividadPrincipal" disabled [(ngModel)]="actividadPrincipal1.nombreActividadPrincipal">
+        </div>
+        <div class="col">
+          <button class="btn btn-primary" (click)="openSM(modalActividadPrincipal)">+</button>
+  
+        <ng-template #modalActividadPrincipal let-modal>
+          <div class="modal-header">
+            <h2 class="modal-title" id="exampleModalLabel">Crear Actividad Principal</h2>
+            <button type="button" class="btn-close" aria-label="Close" (click)="cerrarModal()"></button>
+          </div>
+          <div class="modal-body">          
+            
+          <div class="row">
+              <div class="col">
+                  <div class="form-floating mb-3">
+                      <input
+                        type="string"
+                        class="form-control"
+                        id="actividadPrincipal"
+                        placeholder="Nombre Actividad Principal"
+                        [(ngModel)]="actividadPrincipal.nombreActividadPrincipal"
+                        
+                      />
+                      <label for="floatingInput">Nombre Actividad Pricipal</label>
+                    </div>
+              </div>            
+          </div>
+  
+          <div style="text-align:center">
+            <button class="btn btn-primary" (click)="crearActividadPrincipal()">Crear Actividad</button>
+          </div>                                 
+          </div>
+        </ng-template>
+        </div>
+      </div>    
+    </div>
+    <div class="container">    
+      
+    <div class="row">
+      <div class="col">
+        <h2>Codigo Actividad Secundaria</h2>
+      </div>
+      <div class="col">
+        <input type="number" class="form-control" id="codigoActividadSecundaria" [(ngModel)]="actividadSecundariaCadena" (keyup.enter)=" obtenerActividadSecundaria()">
+      </div>
+      <div class="col">
+        <input type="text" class="form-control" id="nombreActividadSecundaria" [(ngModel)]="actividadSecundaria1.nombreActividadSecundaria" disabled>
+      </div>
+      <div class="col">
+        <div *ngIf="validacion">
+          <button class="btn btn-primary" id="botonCrearActividadSecundaria" (click)="openLG(modalActividadSecundaria)">Crear Actividad Secundaria</button>
+  
+          <ng-template #modalActividadSecundaria let-modal>
+            <div class="modal-header">
+              <h2 class="modal-title" id="exampleModalLabel">Crear Actividad Secundaria</h2>
+              <button type="button" class="btn-close" aria-label="Close" (click)="cerrarModal()"></button>
+            </div>
+            <div class="modal-body">          
+              
+            <div class="row">
+                <div class="col">
+                    <div class="form-floating mb-3">
+                        <input
+                          type="string"
+                          class="form-control"
+                          id="nombreActividadSecundaria2"
+                          placeholder="Nombre Actividad Secundaria"
+                          [(ngModel)]="actividadSecundaria.nombreActividadSecundaria"
+                        />
+                        <label for="floatingInput">Nombre Actividad Secundaria</label>
+                      </div>
+                </div>
+                <div class="row">  
+                  <div class="col">
+                    <div class="form-floating mb-3">
+                        <input
+                          type="date"
+                          class="form-control"
+                          id="fechaInicio"
+                          placeholder="Fecha Inicio"
+                          [(ngModel)]="actividadSecundaria.fechaInicio"
+                        />
+                        <label for="floatingInput">Fecha Inicio</label>
+                      </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-floating mb-3">
+                        <input
+                          type="date"
+                          class="form-control"
+                          id="fechaFin"
+                          placeholder="Fecha Fin"
+                          [(ngModel)]="actividadSecundaria.fechaFin"
+                        />
+                        <label for="floatingInput">Fecha Fin</label>
+                      </div>
+                    </div>
+                </div>                      
+            </div>
+    
+            <div style="text-align:center">
+              <button class="btn btn-primary" (click)="crearActividadSecundaria()">Crear Actividad</button>
+            </div>                                 
+            </div>
+          </ng-template>
+        </div>
+        
+      </div>
+    </div>      
+    </div>
+    <div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col"># Actividad Principal</th>
+            <th scope="col">Actividad Principal</th>
+            <th scope="col"># Actividad Secundaria</th>
+            <th scope="col">Actividad Secundaria</th>
+            <th scope="col">Fecha Inicio</th>
+            <th scope="col">Fecha Fin</th>
+            <th scope="col">Editar/Eliminar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr  *ngFor="let registro of actividadSecundaria; let i = index">
+            <td>{{ registro.id_ActividadPrincipal }}</td>
+            <td>{{ registro.nombreActividadPrincipal }}</td>
+            <td>{{ registro.idActividadSecundaria }}</td>
+            <td>{{ registro.nombreActividadSecundaria }}</td>
+            <td>{{ registro.fechaInicio }}</td>
+            <td>{{ registro.fechaFin }}</td>
+            <td>
+              <button class="btn btn success" (click)="openLG(modificarActividadSecundaria)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: green;transform: msFilter"><path d="m7 17.013 4.413-.015 9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583v4.43zM18.045 4.458l1.589 1.583-1.597 1.582-1.586-1.585 1.594-1.58zM9 13.417l6.03-5.973 1.586 1.586-6.029 5.971L9 15.006v-1.589z"></path><path d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2z"></path></svg></button>
+
+              <ng-template #modificarActividadSecundaria let-modal>
+                <div class="modal-header">
+                  <h2 class="modal-title" id="exampleModalLabel">Modificar Actividad Secundaria</h2>
+                  <button type="button" class="btn-close" aria-label="Close" (click)="cerrarModal()"></button>
+                </div>
+                <div class="modal-body">          
+                  
+                <div class="row">
+                    <div class="col">
+                        <div class="form-floating mb-3">
+                            <input
+                              type="string"
+                              class="form-control"
+                              id="modificarActividadSecundaria"
+                              placeholder="Nombre Actividad Secundaria"
+                              [(ngModel)]="registro.nombreActividadSecundaria"
+                            />
+                            <label for="floatingInput">Nombre Actividad Secundaria</label>
+                          </div>
+                    </div>
+                    <div class="row">  
+                      <div class="col">
+                        <div class="form-floating mb-3">
+                            <input
+                              type="date"
+                              class="form-control"
+                              id="modificarfechaInicio"
+                              placeholder="Fecha Inicio"
+                              [(ngModel)]="registro.fechaInicio"
+                            />
+                            <label for="floatingInput">Fecha Inicio</label>
+                          </div>
+                      </div>
+                      <div class="col">
+                        <div class="form-floating mb-3">
+                            <input
+                              type="date"
+                              class="form-control"
+                              id="modificarfechaFin"
+                              placeholder="Fecha Fin"
+                              [(ngModel)]="registro.fechaFin"
+                            />
+                            <label for="floatingInput">Fecha Fin</label>
+                          </div>
+                        </div>
+                    </div>                      
+                </div>
+        
+                <div style="text-align:center">
+                  <button class="btn btn-primary" (click)="arregloActividadSecundaria([
+                  registro.idActividadSecundaria,
+                  registro.nombreActividadPrincipal,
+                  registro.nombreActividadSecundaria,
+                  registro.fechaInicio,
+                  registro.fechaFin,
+                  registro.id_ActividadPrincipal
+                  ])">Modificar</button>
+                </div>                                 
+                </div>
+              </ng-template>
+
+              <button class="btn btn danger" (click)="eliminarActvidadSecundaria(registro.idActividadSecundaria)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" style="fill: red;transform: msFilter"><path d="M5 20a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8h2V6h-4V4a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v2H3v2h2zM9 4h6v2H9zM8 8h9v12H7V8z"></path><path d="M9 10h2v8H9zm4 0h2v8h-2z"></path></svg></button>
+            </td>     
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  </div>
+    

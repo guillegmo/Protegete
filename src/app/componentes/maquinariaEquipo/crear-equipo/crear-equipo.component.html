@@ -1,0 +1,172 @@
+<div class="container" style="text-align: center">
+  <!-- Nested Row within Card Body -->
+  <div class="text-center">
+    <h1 class="h4 text-gray-900 mb-4">Crear Maquinaria/Equipo</h1>
+  </div>
+
+  <div class="row g-2">
+    <div class="col-md">
+      <select
+        id="vehiculo"
+        class="form-select form-select-lg mb-3"
+        aria-label=".form-select-lg example"
+        placeholder="Elegir Tipo de Vehiculo"        
+        [(ngModel)]="texto"       
+        Autofocus
+      >
+        <option value="1">Otro</option>
+        <option value="2">Transporte</option>
+      </select>
+    </div>
+    <div class="col-md"></div>
+    <div class="col-md"></div>
+    <div class="col-md"></div>
+  </div>
+
+  <div class="row g-2">
+    <div class="col-md">
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Nombre Equipo"  
+          [(ngModel)]="nombreEquipo"        
+        />
+        <label for="floatingInput">Nombre Equipo</label>
+      </div>
+    </div>
+    <div class="col-md">
+      <div class="form-floating">
+        <input 
+        type="text" 
+        class="form-control" 
+        placeholder="Marca"
+        [(ngModel)]="marca"
+         />
+        <label for="floatingInput">Marca</label>
+      </div>
+    </div>
+    <div class="col-md">
+      <div class="form-floating mb-3">
+        <input 
+        type="text"
+         class="form-control"
+          placeholder="Serial"
+          [(ngModel)]="serial"
+          />
+        <label for="floatingInput">Serial</label>
+      </div>
+    </div>
+    <div class="col-md">
+      <div class="form-floating">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Modelo/Referencia"
+          [(ngModel)]="modeloReferencia"
+        />
+        <label for="floatingInput">Modelo/Referencia</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="row g-2">
+    <div class="col-md">
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Placa inventario"
+          [(ngModel)]="placaInventario"
+        />
+        <label for="floatingInput">Placa inventario</label>
+      </div>
+    </div>
+    <div class="col-md">
+      <div class="form-floating">
+        <input 
+        type="text" 
+        class="form-control" 
+        placeholder="Descripción" 
+        [(ngModel)]="descripcion"
+        />
+        <label for="floatingInput">Descripción</label>
+      </div>
+    </div>
+    <div class="col-md"></div>
+    <div class="col-md"></div>
+  </div>
+
+  <div *ngIf="texto=='2'" class="row g-2">
+    <div class="col-md">
+      <div class="form-floating mb-3">
+        <input 
+        type="text"
+         class="form-control" 
+         placeholder="Aseguradora" 
+         [(ngModel)]="aseguradora"
+         />
+        <label for="floatingInput">Aseguradora</label>
+      </div>
+    </div>
+    <div class="col-md">
+      <div class="form-floating">
+        <input 
+        type="text" 
+        class="form-control" 
+        placeholder="Numero Poliza" 
+        [(ngModel)]="numeroPoliza"
+        />
+        <label for="floatingInput">Numero Poliza</label>
+      </div>
+    </div>
+    <div class="col-md">
+      <div class="form-floating mb-3">
+        <input 
+        type="text" 
+        class="form-control" 
+        placeholder="Placa Vehiculo" 
+        [(ngModel)]="placaVehiculo"
+        />
+        <label for="floatingInput">Placa Vehiculo</label>
+      </div>
+    </div>
+    <div class="col-md"></div>
+  </div>  
+  <br />
+  <button class="btn btn-primary" (click)="crearEquipo()">Crear Maquinaria/Equipo</button>
+</div>
+
+<div class="container" style="text-align: center">
+  <!-- Nested Row within Card Body -->
+  <div class="text-center">
+    <h1 class="h4 text-gray-900 mb-4">Registro de Maquinaria/Equipo</h1>
+  </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nombre Equipo</th>
+          <th scope="col">Marca</th>
+          <th scope="col">Serial</th>
+          <th scope="col">Modelo/Referencia</th>
+          <th scope="col">Placa inventario</th>
+          <th scope="col">Descripcion</th>
+          <th scope="col">Seleccionar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let registro of maquinaria; let i = index">
+          <th>{{ i + 1 }}</th>
+          <td>{{ registro.nombreEquipo }}</td>
+          <td>{{ registro.marca }}</td>
+          <td>{{ registro.serial }}</td>
+          <td>{{ registro.modeloReferencia }}</td>
+          <td>{{ registro.placaInventario }}</td>
+          <td>{{ registro.descripcion }}</td>
+          <td><input type="checkbox" /></td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+

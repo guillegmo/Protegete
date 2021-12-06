@@ -1,0 +1,218 @@
+<br>
+<div class="container">
+  <div style="text-align:center;">
+      <h1><strong>Presupuesto</strong></h1>
+  </div>
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Generar Presupuesto</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Presupuesto Generado</button>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+
+    <div class="container">
+      <br>  
+  
+    <div id="bodyLista">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col"># Actividad Principal</th>
+            <th scope="col">Actividad Principal</th>
+            <th scope="col"># Actividad Secundaria</th>
+            <th scope="col">Actividad Secundaria</th>
+            <th scope="col">Fecha Inicio</th>
+            <th scope="col">Fecha Fin</th>
+            <th scope="col">Editar/Eliminar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr  *ngFor="let registro of actividadSecundaria; let i = index">
+            <td>{{ registro.id_ActividadPrincipal }}</td>
+            <td>{{ registro.nombreActividadPrincipal }}</td>
+            <td>{{ registro.idActividadSecundaria }}</td>
+            <td>{{ registro.nombreActividadSecundaria }}</td>
+            <td>{{ registro.fechaInicio }}</td>
+            <td>{{ registro.fechaFin }}</td>
+            <td>
+              
+              <button class="btn btn-primary" (click)="openLG(generarPresupuestoModal, registro.idActividadSecundaria)">{{ boton }}</button>
+  
+              <ng-template #generarPresupuestoModal let-modal>
+                <div class="modal-header">
+                  <h2 class="modal-title" id="actividad-secundaria">{{ registro.idActividadSecundaria }} - {{ registro.nombreActividadSecundaria }}</h2>
+                  <button type="button" class="btn-close" aria-label="Close" (click)="cerrarModal()"></button>
+                </div>
+                <div class="modal-body">          
+                  <div class="container">
+                  <div class="row">
+                    <div class="col">
+                          
+                        <div>
+                          <select class="form-select" id="codigoMaterial" aria-label="grupo linea" [(ngModel)]="materialesCadena" (change)="obtenerProducto()">
+                              <option selected>Seleccione Materiales</option>
+                              <option *ngFor="let inventario of productos; let i = index">{{ inventario.idProducto }}-{{ inventario.nombreProducto }}</option>
+                            </select>
+                        </div>     
+                       
+                      <br>
+                    </div>                    
+                      <div class="col">
+                        <input
+                          type="number"
+                          class="form-control"
+                          id="floatingInput"
+                          placeholder="Cantidad"
+                          [(ngModel)]="cantidad"                       
+                        />
+                      </div>                      
+                  </div>
+                  <br>  
+                    
+                  <div style="text-align:center">
+                    <div>
+                      <button class="btn btn-primary" (click)="agregarMaterial(registro.idActividadSecundaria)">+</button>
+                    </div>
+                  </div>
+                                    
+                </div>
+  
+                <div style="max-height: 40vh; overflow-y: auto; height: 100vh">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Materiales</th>
+                        <th scope="col">Cantidad</th>
+                        <th scope="col">Unidad Medida</th>
+                        <th scope="col">Valor Unitario</th>
+                        <th scope="col">Valor Total</th>
+                        <th scope="col">Eliminar</th>                        
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr  *ngFor="let registro2 of materiales; let i = index">
+                        <td>{{ registro2.nombreMaterial}}</td>
+                        <td>{{ registro2.cantidadMaterial}}</td>
+                        <td>{{ registro2.unidadMedidaMaterial}}</td>
+                        <td>{{ registro2.valorUnitarioMaterial | currency}}</td>
+                        <td>{{ registro2.valorTotalMaterial | currency}}</td>
+                        <td><button class="btn btn danger" [disabled]="botonEliminar" (click)="eliminarMaterial(registro2.idMateriales)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" style="fill: red;transform: msFilter"><path d="M5 20a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8h2V6h-4V4a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v2H3v2h2zM9 4h6v2H9zM8 8h9v12H7V8z"></path><path d="M9 10h2v8H9zm4 0h2v8h-2z"></path></svg></button></td>             
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <br>   
+                <div class="row">
+                  <div class="col" *ngIf="activo">
+                    <button class="btn btn-primary" (click)="agregarPresupuesto(registro.id_ActividadPrincipal, registro.nombreActividadPrincipal, registro.idActividadSecundaria, registro.nombreActividadSecundaria, valorTotalGeneral, 'si')">Generar Presupuesto</button>
+                  </div>
+                  <div class="col">
+                    <h1><strong>Total Actividad: {{ valorTotalGeneral | currency }}</strong></h1>
+                  </div>
+                </div>                                              
+                </div>
+              </ng-template>
+  
+            </td>
+                
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  </div>
+  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+    
+    <br>
+
+    <div id="bodyLista">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Codigo Partida</th>
+            <th scope="col">Partida</th>
+            <th scope="col">Codigo Concepto de Partida</th>
+            <th scope="col">Concepto de Partida</th>
+            <th scope="col">Materiales</th>
+            <th scope="col">Valor Total</th>
+            <th scope="col">Eliminar</th>  
+          </tr>
+        </thead>
+        <tbody>
+          <tr  *ngFor="let presupuestoG of presupuestos; let i = index">
+            <td>{{ presupuestoG.id_ActividadPrincipal }}</td>
+            <td>{{ presupuestoG.nombreActividadPrincipal}}</td>
+            <td>{{ presupuestoG.id_ActividadSecundaria}}</td>
+            <td>{{ presupuestoG.nombreActividadSecundaria }}</td>
+            <td>
+
+              <label (click)="openLG(generarPresupuestoModal,presupuestoG.id_ActividadSecundaria)"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-journal-medical" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v.634l.549-.317a.5.5 0 1 1 .5.866L9 6l.549.317a.5.5 0 1 1-.5.866L8.5 6.866V7.5a.5.5 0 0 1-1 0v-.634l-.549.317a.5.5 0 1 1-.5-.866L7 6l-.549-.317a.5.5 0 0 1 .5-.866l.549.317V4.5A.5.5 0 0 1 8 4zM5 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+                <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"/>
+                <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"/>
+              </svg></label>
+  
+              <ng-template #generarPresupuestoModal let-modal>
+                <div class="modal-header">
+                  <h2 class="modal-title" id="actividad-secundaria">{{ presupuestoG.id_ActividadSecundaria }} - {{ presupuestoG.nombreActividadSecundaria }}</h2>
+                  <button type="button" class="btn-close" aria-label="Close" (click)="cerrarModal()"></button>
+                </div>
+                <div class="modal-body">          
+                  
+                  
+  
+                <div style="max-height: 40vh; overflow-y: auto; height: 100vh">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Materiales</th>
+                        <th scope="col">Cantidad</th>
+                        <th scope="col">Unidad Medida</th>
+                        <th scope="col">Valor Unitario</th>
+                        <th scope="col">Valor Total</th>                                          
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr  *ngFor="let registro2 of materiales; let i = index">
+                        <td>{{ registro2.nombreMaterial}}</td>
+                        <td>{{ registro2.cantidadMaterial}}</td>
+                        <td>{{ registro2.unidadMedidaMaterial}}</td>
+                        <td>{{ registro2.valorUnitarioMaterial | currency}}</td>
+                        <td>{{ registro2.valorTotalMaterial | currency}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <br>   
+                <div class="row">
+                  <div class="col">
+                   
+                  </div>
+                  <div class="col">
+                    <h1><strong>Total Actividad: {{ valorTotalGeneral | currency }}</strong></h1>
+                  </div>
+                </div>                                              
+                </div>
+              </ng-template>
+
+            </td>
+            <td>{{ presupuestoG.valorTotalPresupuesto | currency }}</td>
+            <td><button class="btn btn danger" (click)="eliminarPresupuesto(presupuestoG.idPresupuesto)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" style="fill: red;transform: msFilter"><path d="M5 20a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8h2V6h-4V4a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v2H3v2h2zM9 4h6v2H9zM8 8h9v12H7V8z"></path><path d="M9 10h2v8H9zm4 0h2v8h-2z"></path></svg></button></td>           
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <br>
+    <hr>
+    <h1><strong>Total Actividad: {{ valorTotalPresupuesto | currency }}</strong></h1>
+
+  </div>
+</div>
+

@@ -1,0 +1,21 @@
+h1{
+    text-align: center;
+    font-weight: bold;
+}
+
+form{
+    padding: 10px;
+    margin: 10px;
+}
+
+button{
+    margin: 10px;
+}
+
+#mensaje{
+    background: green;
+    color: white;
+    padding: 10px;
+    margin: 20px;
+    border-radius: 10px;
+}

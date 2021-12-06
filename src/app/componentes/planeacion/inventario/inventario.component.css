@@ -1,0 +1,17 @@
+#mas{
+    border-radius: 20px;
+}
+
+table{
+    overflow:scroll;
+    height:px;
+    width:100%;   
+}
+
+#listaProductos{
+    color: blue;
+}
+
+#listaProductos:hover{
+    color: rgb(0, 255, 136);
+}

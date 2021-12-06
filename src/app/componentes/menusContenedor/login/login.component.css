@@ -1,0 +1,31 @@
+#tarjeta {
+  margin: 10px;
+  padding: 10px;
+  
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  border-color: #4e73df;
+  border-radius: 15px;
+  border-width: 5px;
+}
+
+#centrar {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ min-height: 100vh;
+}
+
+h1{
+  color: #4e73df;
+  font-weight: bold;
+}
+
+p{
+  color: red;
+}
+
+

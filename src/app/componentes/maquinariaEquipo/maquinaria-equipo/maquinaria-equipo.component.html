@@ -1,0 +1,113 @@
+<div class="container" style="text-align: center">
+    <!-- Nested Row within Card Body -->
+    <div class="text-center">
+      <h1 class="h4 text-gray-900 mb-4">Registro de Maquinaria/Equipo</h1>
+    </div>
+    <form class="user">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre Equipo</th>            
+            <th scope="col">Descripcion</th>
+            <th scope="col">Seleccionar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let registro of maquinaria; let i = index">
+          <th>{{ i + 1}}</th>
+          <td>{{ registro.nombreEquipo }}</td>          
+          <td>
+
+            <label id="caracteristicas" style="cursor: pointer" (click)= "openLG(registroFotograficoInicial)"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-journal-text" viewBox="0 0 16 16">
+              <path d="M5 10.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+              <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"/>
+              <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"/>
+            </svg></label>
+
+            <ng-template #registroFotograficoInicial let-modal>
+              <div class="modal-header">
+                <h2 class="modal-title" id="exampleModalLabel">Registro Fotografico Vehiculo</h2>
+                <button type="button" class="btn-close" aria-label="Close" (click)="cerrarModal()"></button>
+              </div>
+              <div class="modal-body">
+               
+                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                  <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                  </div>
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <img [src]="registro.foto1" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                      <img [src]="registro.foto2" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                      <img [src]="registro.foto3" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                      <img [src]="registro.foto4" class="d-block w-100" alt="...">
+                    </div>
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                  </button>
+                </div>
+                <br>
+                <div class="container">
+                  <div class="row">
+                    <div class="col">
+                      <p>Serial: {{ registro.serial }}</p>
+                    </div>
+                    <div class="col">
+                      <p>Modelo/Referencia: {{ registro.modeloReferencia }}</p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <p>Placa Inventario: {{ registro.placaInventario }}</p>
+                    </div>
+                    <div class="col">
+                      <p>Descripcion: {{ registro.descripcion }}</p>
+                    </div>
+                  </div> 
+                  <div *ngIf="registro.aseguradora != ''">
+                  <div class="row">
+                    <div class="col">
+                      <p>Aseguradora: {{ registro.aseguradora }}</p>
+                    </div>
+                    <div class="col">
+                      <p>Numero Poliza: {{ registro.numeroPoliza }}</p>
+                    </div>
+                  </div> 
+                  <div class="row">
+                    <div class="col">
+                      <p>Placa Vehiculo: {{ registro.placaVehiculo }}</p>
+                    </div>
+                  </div> 
+                  </div>                 
+                </div>
+              </div>              
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="cerrarModal()" >Cerrar</button>                
+              </div>
+            </ng-template>
+
+          </td>          
+          <td><input type="checkbox" /></td>
+        </tr>
+        </tbody>
+      </table>
+      <button class="btn btn-primary btn-user btn-block" (click)="registrarEquipo()"> Registrar </button>
+    </form>
+  </div>
+  

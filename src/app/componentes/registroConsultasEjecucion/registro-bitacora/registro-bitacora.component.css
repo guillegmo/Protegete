@@ -1,0 +1,86 @@
+h1{
+    font-weight: bold;
+}
+
+textarea{
+    text-align: justify;
+    border-color: #4e73df;
+    border-radius: 15px;
+    border-width: 5px;
+}
+
+hr{
+    color: #4e73df;
+}
+
+label{
+    text-decoration: none;
+    color: #4e73df;
+    font-weight: bold;
+}
+
+label:hover{
+    color: #35f5bb;
+    font-weight: bold;
+}
+
+#botonActvidad{
+    border-radius: 30px;
+    font-weight: bold;
+}
+
+#botonActvidad:hover{
+    background: #35f5bb;
+    border-color: #35f5bb;
+    font-weight: bold;
+}
+
+#iconoLluvia{
+    color: #3558f5;
+}
+
+.card{
+    border-radius: 10px;
+}
+
+.card:hover{    
+    background: #c3f3e5;
+    color: white;
+}
+
+#bodyNotas{
+    max-height: calc(100vh - 250px);
+    overflow-y: auto;
+    height: 100vh;    
+}
+
+#notas{
+    background: #35f5bb;
+    border-radius: 5px;
+}
+
+.galeria{
+    width: 70%;
+    margin: auto;
+    list-style: none;
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.galeria li{
+    margin: 5px;
+}
+
+.galeria img{
+    width: 75px;
+    height: 50px;
+}
+
+td{
+    text-align: center;
+}
+
+img{
+    width: 300px; height: 300px;
+}
