@@ -71,13 +71,13 @@ export class RegistroBitacoraComponent implements OnInit {
   objetoContrato = 'EL  CONTRATISTA  se  obliga  para  con  EL CONTRATANTE  a  ejecutar  por  el  sistema  de  PRECIOS  UNITARIOS  FIJOS  SIN FÓRMULA  DE  REAJUSTE  Y  PLAZO  FIJO  las  obras  civiles  para  la  construcción  de  la cimentación  y  estructura  del  Proyecto Constructora Prueba SAS  Las  obras se  adelantarán  en  el  inmueble  ubicado  en  la  Vereda  la  Leona  Municipio  de  Cajamarca Tolima  Coordenadas  423 01 0N    75 30 34 0 4 383611  75.509444  de  acuerdo con  las  normas  técnicas  vigentes  y  los  documentos  que  hacen  parte  integral  del  contrato enunciados  en  la  cláusula  segunda  cumpliendo  con  los  más  altos  estándares  de  calidad El  detalle  de  los  trabajos  a  ejecutar  con  las  cantidades  precios  unitarios  y  totales  están contenidos  en  el  Anexo  No  1  del  presente  contrato  que  para  efectos  legales  hace  parte integral  del  mismo';
   usuario: string = 'prueba';
 
-  constructor(private modal: NgbModal, private router: Router) {  
+  constructor(private modal: NgbModal, private router: Router, private dataServices: DataServices) {  
     
   }
 
 
   ngOnInit(): void {
-    
+    this.obtenerActividadPrincipales();
   }
 
   crearActividad(){
@@ -113,22 +113,35 @@ export class RegistroBitacoraComponent implements OnInit {
       this.arrayNotas.push(this.nota);
       this.nota = '';
     }
+    
+    obtenerActividadPrincipales() {
+      this.dataServices.cargarActidadPrincipales().subscribe(
+        (res) => {
+          this.actividadPrincipal = res;
+          console.log(this.actividadPrincipal);
+        },
+        (error) => console.error(error)
+      );
+    }
 
-    selectActividadSecundaria(){
-      this.arrayActividadSecundaria = [];
-      let numActividadS = 0;
-      let actividad1;
-      for(let i = 0 ; i < this.actividadPrincipal.length ; i++) {
-        for(let j = 0 ; j < this.actividadSecundaria.length ; j++){
-          if(this.select==this.actividadSecundaria[j].actividadPrincipal){
-            if(this.actividadPrincipal[i]==this.actividadSecundaria[j].actividadPrincipal){
-              this.numActividadP = i+1;
-              numActividadS++;
-              this.arrayActividadSecundaria.push(this.numActividadP+"."+numActividadS+" "+this.actividadSecundaria[j].actividadSecundaria);
-            }
-          }      
-        }
-      }
-    }  
+    obtenerActividadSecundaria() {
+
+      let id1 = (document.getElementById('codigoActividadPrincipal') as HTMLInputElement).value + (document.getElementById('codigoActividadSecundaria') as HTMLInputElement).value;
+      let id2 = (document.getElementById('codigoActividadPrincipal') as HTMLInputElement).value;
+      console.log(id1+" y "+id2);
+  
+      this.dataServices.cargarActividadSecundaria(parseInt(id1), parseInt(id2)).subscribe(
+        (res) => {
+          this.actividadSecundaria = res;
+          console.log(this.actividadSecundaria);
+          if(this.actividadSecundaria == null){
+            alert('El codigo de la Actividad Secundaria no Existe');
+            this.actividadSecundaria = [];
+            (document.getElementById('botonCrearActividadSecundaria') as HTMLInputElement).focus();
+          }
+        },
+        (error) => console.error(error)
+      );
+    }
 
 }
