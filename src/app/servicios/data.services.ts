@@ -16,6 +16,7 @@ import { Materiales } from "../componentes/planeacion/presupuesto/materiales";
 import { Presupuesto } from "../componentes/planeacion/presupuesto/presupuesto";
 import { RepresentanteLegal } from "../componentes/administracion/crear-empresa/representanteLegal";
 import { CrearEmpresa } from "../componentes/administracion/crear-empresa/crearEmpresa";
+import { Maquinaria } from "../componentes/maquinariaEquipo/crear-equipo/maquinaria";
 
 @Injectable()
 export class DataServices{    
@@ -35,6 +36,7 @@ export class DataServices{
     myApiPresupuesto: string;
     myApiRepresentanteLegal: string;
     myApiCrearEmpresa: string;
+    myApiEquipo: string;
 
     constructor(private httpClient: HttpClient){
 
@@ -53,6 +55,7 @@ export class DataServices{
         this.myApiPresupuesto = '/api/Presupuesto';
         this.myApiRepresentanteLegal = '/api/RepresentanteLegal';
         this.myApiCrearEmpresa = '/api/CrearEmpresa';
+        this.myApiEquipo = '/api/Equipo';
     }
     
     //Consultas tabla empleado
@@ -363,4 +366,27 @@ export class DataServices{
     actualizarCrearEmpresa(crearEmpresa: CrearEmpresa): Observable<any>{
         return this.httpClient.put(`${this.myAppUrl+this.myApiCrearEmpresa}`, crearEmpresa);
     }
+
+    //Consultas tabla crearEmpresa
+
+    cargarEquipos(): Observable<any>{
+        return this.httpClient.get(`${this.myAppUrl+this.myApiEquipo}`);
+    }
+
+    cargarEquipo(id: number): Observable<any>{
+        return this.httpClient.get(`${this.myAppUrl+this.myApiEquipo}/${id}`);
+    } 
+
+    eliminarEquipo(id: number): Observable<any>{
+        return this.httpClient.delete(`${this.myAppUrl+this.myApiEquipo}/${id}`);
+    }
+
+    crearEquipo(maquinaria: Maquinaria): Observable<any>{
+        return this.httpClient.post(`${this.myAppUrl+this.myApiEquipo}`, maquinaria);
+    }
+
+    actualizarEquipo(maquinaria: Maquinaria): Observable<any>{
+        return this.httpClient.put(`${this.myAppUrl+this.myApiCrearEmpresa}`, maquinaria);
+    }
+
 }

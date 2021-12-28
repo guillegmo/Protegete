@@ -1,13 +1,43 @@
 h1{
-    text-align: center;
     font-weight: bold;
 }
 
-form{
-    padding: 10px;
-    margin: 10px;
+.galeria{
+    width: 70%;
+    margin: auto;
+    list-style: none;
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
 }
 
-button{
-    margin: 10px;
+.galeria li{
+    margin: 5px;
+}
+
+.galeria img{
+    width: 75px;
+    height: 50px;
+}
+
+td{
+    text-align: center;
+}
+
+img{
+    width: 300px; height: 300px;
+}
+
+#caracteristicas{
+    color: #4e73df;
+    font-weight: bold;
+}
+
+#caracteristicas:hover{
+    color: #35f5bb;
+    font-weight: bold;
+}
+
+p{
+    font-weight: bold;
 }

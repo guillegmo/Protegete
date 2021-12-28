@@ -14,6 +14,10 @@ export class RegistroAsistenciaComponent implements OnInit {
   empleados: any = [];
 
   ngOnInit(): void {
+    this.cargarEmpleados();
+  }
+
+  cargarEmpleados(){
     this.dataServices.cargarEmpleados()
     .subscribe(
       res => {
