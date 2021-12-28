@@ -65,7 +65,7 @@ export class RegistroBitacoraComponent implements OnInit {
   volumen: string;
 
   nitEmpresa = '900.777.888';
-  nombreEmpresa = 'Constructora Prueba SAS';
+  nombreEmpresa = 'Constructora Prueba S.A.S';
   fechaDia = new Date();
   numeroContrato = 'PC-20211002';
   objetoContrato = 'EL  CONTRATISTA  se  obliga  para  con  EL CONTRATANTE  a  ejecutar  por  el  sistema  de  PRECIOS  UNITARIOS  FIJOS  SIN FÓRMULA  DE  REAJUSTE  Y  PLAZO  FIJO  las  obras  civiles  para  la  construcción  de  la cimentación  y  estructura  del  Proyecto Constructora Prueba SAS  Las  obras se  adelantarán  en  el  inmueble  ubicado  en  la  Vereda  la  Leona  Municipio  de  Cajamarca Tolima  Coordenadas  423 01 0N    75 30 34 0 4 383611  75.509444  de  acuerdo con  las  normas  técnicas  vigentes  y  los  documentos  que  hacen  parte  integral  del  contrato enunciados  en  la  cláusula  segunda  cumpliendo  con  los  más  altos  estándares  de  calidad El  detalle  de  los  trabajos  a  ejecutar  con  las  cantidades  precios  unitarios  y  totales  están contenidos  en  el  Anexo  No  1  del  presente  contrato  que  para  efectos  legales  hace  parte integral  del  mismo';
