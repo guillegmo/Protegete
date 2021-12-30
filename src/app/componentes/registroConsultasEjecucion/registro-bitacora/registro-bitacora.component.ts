@@ -128,8 +128,7 @@ export class RegistroBitacoraComponent implements OnInit {
 
       let id1 = (document.getElementById('codigoActividadPrincipal') as HTMLInputElement).value + (document.getElementById('codigoActividadSecundaria') as HTMLInputElement).value;
       let id2 = (document.getElementById('codigoActividadPrincipal') as HTMLInputElement).value;
-      console.log(id1+" y "+id2);
-  
+      console.log(id1+" y "+id2);  
       this.dataServices.cargarActividadSecundaria(parseInt(id1), parseInt(id2)).subscribe(
         (res) => {
           this.actividadSecundaria = res;
