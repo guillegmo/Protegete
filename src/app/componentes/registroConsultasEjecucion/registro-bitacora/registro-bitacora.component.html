@@ -166,7 +166,7 @@
                 <div id="box" style="float: left; margin: 10px">
                   <select class="form-select" aria-label="tipo de iva" [(ngModel)]="select">
                     <option selected>Actividad Principal</option>
-                    <option *ngFor="let actividadP of actividadPrincipal; let i = index" value="{{actividadP}}">{{ actividadP }}</option>
+                    <option *ngFor="let actividadP of actividadPrincipal; let i = index">{{ actividadP.nombreActividadPrincipal }}</option>
                   </select>    
                 </div>
               </div>    

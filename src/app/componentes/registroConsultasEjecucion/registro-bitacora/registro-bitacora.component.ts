@@ -25,11 +25,7 @@ export class RegistroBitacoraComponent implements OnInit {
 
   dias = [] = [1,2,3,4,5,6,7,8,9,0,11,12];
 
-  actividadPrincipal = [
-    'PRELIMINARES',
-    'ESTRUCTURA',
-    'MAMPOSTERIA',
-  ];
+  actividadPrincipal: any = [];
 
   actividadSecundaria: Actividades[] = [
     new Actividades('1', 'PRELIMINARES','CERRAMIENTO TELA FIB. TEJIDA H= 2,10 MTS','11/10/2021', '22/10/2021'),
