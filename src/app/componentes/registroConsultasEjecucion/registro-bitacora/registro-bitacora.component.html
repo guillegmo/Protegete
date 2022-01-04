@@ -164,9 +164,9 @@
             <div class="row g-2">
               <div class="col-md">
                 <div id="box" style="float: left; margin: 10px">
-                  <select class="form-select" aria-label="tipo de iva" [(ngModel)]="select">
+                  <select class="form-select" aria-label="tipo de iva" [(ngModel)]="select" (change)="obtenerActividadSecundarias()">
                     <option selected>Actividad Principal</option>
-                    <option *ngFor="let actividadP of actividadPrincipal; let i = index">{{ actividadP.nombreActividadPrincipal }}</option>
+                    <option *ngFor="let actividadP of actividadPrincipal; let i = index">{{ actividadP.idActividadPrincipal }} {{ actividadP.nombreActividadPrincipal }}</option>
                   </select>    
                 </div>
               </div>    
@@ -174,7 +174,7 @@
                 <div id="box" style="float: left; margin: 10px">
                   <select class="form-select" aria-label="tipo de iva" [(ngModel)]="nombreActividadCadena">
                       <option selected>Actividad Secundaria</option>
-                      <option *ngFor="let actividadS of arrayActividadSecundaria; let i = index">{{ actividadS }}</option>
+                      <option *ngFor="let actividadS of actividadSecundaria; let i = index">{{ actividadS.idActividadSecundaria }} {{ actividadS.nombreActividadSecundaria }}</option>
                     </select>
                 </div> 
               </div>  

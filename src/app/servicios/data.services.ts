@@ -259,8 +259,12 @@ export class DataServices{
 
     //Consultas tabla actividadSecundaria
 
-    cargarActidadSecundarias(): Observable<any>{
+    cargarActividadSecundariasAll(): Observable<any>{
         return this.httpClient.get(`${this.myAppUrl+this.myApiActividadSecundaria}`);
+    }
+
+    cargarActividadSecundarias(id1: number): Observable<any>{
+        return this.httpClient.get(`${this.myAppUrl+this.myApiActividadSecundaria}/${id1}`);
     }
 
     cargarActividadSecundaria(id1: number, id2: number): Observable<any>{

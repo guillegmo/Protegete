@@ -74,7 +74,7 @@ export class PresupuestoComponent implements OnInit {
   }
 
   obtenerActividadSecundarias(){
-    this.dataServices.cargarActidadSecundarias().subscribe(
+    this.dataServices.cargarActividadSecundariasAll().subscribe(
       (res) => {
         this.actividadSecundaria = res;
         console.log(this.actividadSecundaria);

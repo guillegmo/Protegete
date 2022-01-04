@@ -27,25 +27,7 @@ export class RegistroBitacoraComponent implements OnInit {
 
   actividadPrincipal: any = [];
 
-  actividadSecundaria: Actividades[] = [
-    new Actividades('1', 'PRELIMINARES','CERRAMIENTO TELA FIB. TEJIDA H= 2,10 MTS','11/10/2021', '22/10/2021'),
-    new Actividades('1', 'PRELIMINARES','CAMPAMENTO TABLA 9 M2','11/10/2021', '22/10/2021'),
-    new Actividades('1', 'PRELIMINARES','LOCALIZACION REPLANTEO OBRA ARQUITECTONICA','11/10/2021', '22/10/2021'),
-    new Actividades('1', 'PRELIMINARES','DESCAPOTE MANUAL MAS RETIRO H= 0,20 MTS','11/10/2021', '22/10/2021'),
-    new Actividades('1', 'PRELIMINARES','RETIRO DE ESCOMBROS A MAQUINA 10 KM','11/10/2021', '22/10/2021'),
-    new Actividades('1', 'PRELIMINARES','RELLENO TIERRA + NIVELACION + ACARREO','11/10/2021', '22/10/2021'),
-    new Actividades('2', 'ESTRUCTURA','EXCAVACION TIERRA A MANO','11/10/2021', '22/10/2021'),
-    new Actividades('2', 'ESTRUCTURA','VIGA CIMIENTO ENLACE H= 20-40 CM','11/10/2021', '22/10/2021'),
-    new Actividades('2', 'ESTRUCTURA','ACERO DE REFUERZO FLEJADO 60000 PSI 420 Mpa','11/10/2021', '22/10/2021'),
-    new Actividades('2', 'ESTRUCTURA','ZAPATA CONCRETO 3000 PSI INC FORMALETA','11/10/2021', '22/10/2021'),
-    new Actividades('2', 'ESTRUCTURA','MALLA ELECTROSOLDADA','11/10/2021', '22/10/2021'),
-    new Actividades('2', 'ESTRUCTURA','COLUMNA CONCRETO 3000 PSI','11/10/2021', '22/10/2021'),
-    new Actividades('2', 'ESTRUCTURA','CONTRAPISO CONCRETO E= 10 CM 2500 PSI','11/10/2021', '22/10/2021'),
-    new Actividades('2', 'ESTRUCTURA','VIGA CONCR. AMARRE MURO 10 - 12 X 20 CM','11/10/2021', '22/10/2021'),
-    new Actividades('2', 'ESTRUCTURA','CINTA CONFINAMIENTO MURO','11/10/2021', '22/10/2021'),
-    new Actividades('3', 'MAMPOSTERIA','MURO LAD. SOGA LIMPIO REVITADO (2C)','11/10/2021', '22/10/2021'),
-    new Actividades('3', 'MAMPOSTERIA','REPELLO MURO 1:3','11/10/2021', '22/10/2021'),
-  ];
+  actividadSecundaria: any = [];
 
   arrayActividadSecundaria: any =[];
   numActividadP = 0;
@@ -115,25 +97,22 @@ export class RegistroBitacoraComponent implements OnInit {
         (res) => {
           this.actividadPrincipal = res;
           console.log(this.actividadPrincipal);
+          this.obtenerActividadSecundarias();
         },
         (error) => console.error(error)
       );
     }
 
-    obtenerActividadSecundaria() {
-
-      let id1 = (document.getElementById('codigoActividadPrincipal') as HTMLInputElement).value + (document.getElementById('codigoActividadSecundaria') as HTMLInputElement).value;
-      let id2 = (document.getElementById('codigoActividadPrincipal') as HTMLInputElement).value;
-      console.log(id1+" y "+id2);  
-      this.dataServices.cargarActividadSecundaria(parseInt(id1), parseInt(id2)).subscribe(
+    obtenerActividadSecundarias() {
+      if(this.select == "Actividad Principal"){
+        this.actividadSecundaria = [];
+      }
+      let array = this.select.split(' ');
+      let id1 = parseInt(array[0]);
+      this.dataServices.cargarActividadSecundarias(id1).subscribe(
         (res) => {
           this.actividadSecundaria = res;
-          console.log(this.actividadSecundaria);
-          if(this.actividadSecundaria == null){
-            alert('El codigo de la Actividad Secundaria no Existe');
-            this.actividadSecundaria = [];
-            (document.getElementById('botonCrearActividadSecundaria') as HTMLInputElement).focus();
-          }
+          console.log(this.actividadSecundaria);          
         },
         (error) => console.error(error)
       );
