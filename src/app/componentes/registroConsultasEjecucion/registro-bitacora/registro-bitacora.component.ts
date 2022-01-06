@@ -18,10 +18,7 @@ export class RegistroBitacoraComponent implements OnInit {
                 "averia en superficie a trabajar"];
   nota = '';
 
-  actividades: Actividad[]=[
-    new Actividad('1.1 CERRAMIENTO TELA FIB. TEJIDA H= 2,10 MTS','2','2','2','2','2'),
-    new Actividad('1.2 CAMPAMENTO TABLA 9 M2','3','3','3','3','3')
-  ];
+  actividades: any =[];
 
   dias = [] = [1,2,3,4,5,6,7,8,9,0,11,12];
 
