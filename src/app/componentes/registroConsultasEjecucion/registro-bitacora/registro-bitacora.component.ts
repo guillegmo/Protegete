@@ -66,6 +66,10 @@ export class RegistroBitacoraComponent implements OnInit {
     this.modal.open(contenido,{size: 'lg'});
   }
 
+  openSM(contenido: any){
+    this.modal.open(contenido,{size: 'sm'});
+  }
+
   linkAsistencia(){
     this.router.navigate(['registroyconsultasdeejecucion/bitacora/registroasistencia']);
   }
