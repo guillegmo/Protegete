@@ -57,6 +57,7 @@ import { ActaInicioComponent } from './componentes/administracion/acta-inicio/ac
 import { ActaTecnicaInicialComponent } from './componentes/administracion/acta-tecnica-inicial/acta-tecnica-inicial.component';
 import { InterventoriaComponent } from './componentes/precontractual/interventoria/interventoria.component';
 import { PruebasLaboratorioComponent } from './componentes/registroConsultasEjecucion/pruebas-laboratorio/pruebas-laboratorio.component';
+import { CrearBitacoraComponent } from './componentes/registroConsultasEjecucion/crear-bitacora/crear-bitacora.component';
 
 const routes: Routes = [
   {path:'', component: PrincipalComponent},
@@ -117,7 +118,7 @@ const routes: Routes = [
   {path:'administracion/actatecnicainicial', component: ActaTecnicaInicialComponent},
   {path:'precontractual/interventoria', component: InterventoriaComponent},
   {path:'registroyconsultasdeejecucion/pruebaslaboratorio', component: PruebasLaboratorioComponent},
-  
+  {path:'registroyConsultasdeejecucion/crearBitacora', component: CrearBitacoraComponent},
 ];
 
 @NgModule({

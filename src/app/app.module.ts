@@ -78,6 +78,7 @@ import { ActaTecnicaInicialComponent } from './componentes/administracion/acta-t
 import { InterventoriaComponent } from './componentes/precontractual/interventoria/interventoria.component';
 import { PruebasLaboratorioComponent } from './componentes/registroConsultasEjecucion/pruebas-laboratorio/pruebas-laboratorio.component';
 import { InformeBitacoraComponent } from './componentes/registroConsultasEjecucion/informe-bitacora/informe-bitacora.component';
+import { CrearBitacoraComponent } from './componentes/registroConsultasEjecucion/crear-bitacora/crear-bitacora.component';
 
 @NgModule({
   declarations: [
@@ -144,6 +145,7 @@ import { InformeBitacoraComponent } from './componentes/registroConsultasEjecuci
     InterventoriaComponent,
     PruebasLaboratorioComponent,
     InformeBitacoraComponent,
+    CrearBitacoraComponent,
   ],
   imports: [
     BrowserModule,
