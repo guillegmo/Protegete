@@ -81,7 +81,7 @@ export class RegistroBitacoraComponent implements OnInit {
   limpiarFormulario(){
     this.nombreActividad = '';
     this.largo = '';
-    this.ancho = '';
+    this.ancho = '';     
     this.alto = '';
     this.area = '';
     this.volumen = '';
