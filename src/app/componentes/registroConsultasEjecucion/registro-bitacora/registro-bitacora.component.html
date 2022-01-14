@@ -124,16 +124,104 @@
           </div>
         </ng-template>
         <div class="col-md">
-          <label style="cursor: pointer" (click)="linkMaquinariaEquipo()"><strong>Maquinaria/Equipo</strong>&nbsp;&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-tools" viewBox="0 0 16 16">
+          <label style="cursor: pointer" (click)="openLG(maquinariaEquipo)"><strong>Maquinaria/Equipo</strong>&nbsp;&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-tools" viewBox="0 0 16 16">
             <path d="M1 0 0 1l2.2 3.081a1 1 0 0 0 .815.419h.07a1 1 0 0 1 .708.293l2.675 2.675-2.617 2.654A3.003 3.003 0 0 0 0 13a3 3 0 1 0 5.878-.851l2.654-2.617.968.968-.305.914a1 1 0 0 0 .242 1.023l3.356 3.356a1 1 0 0 0 1.414 0l1.586-1.586a1 1 0 0 0 0-1.414l-3.356-3.356a1 1 0 0 0-1.023-.242L10.5 9.5l-.96-.96 2.68-2.643A3.005 3.005 0 0 0 16 3c0-.269-.035-.53-.102-.777l-2.14 2.141L12 4l-.364-1.757L13.777.102a3 3 0 0 0-3.675 3.68L7.462 6.46 4.793 3.793a1 1 0 0 1-.293-.707v-.071a1 1 0 0 0-.419-.814L1 0zm9.646 10.646a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708zM3 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026L3 11z"/>
           </svg></label>
+
+          <ng-template #maquinariaEquipo let-modal>
+            <div class="modal-header">              
+              <button type="button" class="btn-close" aria-label="Close" (click)="limpiarFormulario()"></button>
+            </div>
+            <div class="modal-body">
+             
+              <div class="container" style="text-align: center">
+                <!-- Nested Row within Card Body -->
+                <div class="text-center">
+                  <h1 class="h4 text-gray-900 mb-4">Lista Maquinaria/Equipo</h1>
+                </div>
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nombre Equipo</th>
+                        <th scope="col">Marca</th>
+                        <th scope="col">Seleccionar</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let registro of equipo; let i = index">
+                        <th>{{ i + 1 }}</th>
+                        <td>{{ registro.nombreEquipo }}</td>
+                        <td>{{ registro.marca }}</td>                        
+                        <td>                          
+                          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">                        
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+              </div>
+              
+            </div>          
+            
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" (click)="cerrarModal()">Cerrar</button>
+              <button type="button" class="btn btn-primary">Registrar</button>
+            </div>
+          </ng-template>
+
         </div> 
         <div class="col-md">
-          <label style="cursor: pointer" (click)="linkAsistencia()"><strong>Asistencia</strong>&nbsp;&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-check" viewBox="0 0 16 16">
+          <label style="cursor: pointer" (click)="openLG(asistencia)"><strong>Asistencia</strong>&nbsp;&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-check" viewBox="0 0 16 16">
             <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
             <path fill-rule="evenodd" d="M15.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L12.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
           </svg></label>
         </div>
+
+        <ng-template #asistencia let-modal>
+          <div class="modal-header">              
+            <button type="button" class="btn-close" aria-label="Close" (click)="limpiarFormulario()"></button>
+          </div>
+          <div class="modal-body">
+           
+            <div class="container" style="text-align: center">
+              <!-- Nested Row within Card Body -->
+              <div class="text-center">
+                <h1 class="h4 text-gray-900 mb-4">Asistencia</h1>
+              </div>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Primer Nombre</th>
+                      <th scope="col">Segundo Nombre</th>
+                      <th scope="col">Primer Apellido</th>
+                      <th scope="col">Segundo Apellido</th>
+                      <th scope="col">Seleccionar</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let registro of empleados; let i = index">
+                      <th>{{ i + 1 }}</th>
+                      <td>{{ registro.nombre1 }}</td>
+                      <td>{{ registro.nombre2 }}</td> 
+                      <td>{{ registro.apellido1 }}</td>
+                      <td>{{ registro.apellido2 }}</td>                        
+                      <td>                          
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">                        
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+            </div>
+            
+          </div>          
+          
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="cerrarModal()">Cerrar</button>
+            <button type="button" class="btn btn-primary">Registrar</button>
+          </div>
+        </ng-template>
+
         <div class="col-md">
           <label style="cursor: pointer" (click)= "openLG(contenidoRegistroNotas)"><strong>Notas</strong>&nbsp;&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-journal-arrow-up" viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M8 11a.5.5 0 0 0 .5-.5V6.707l1.146 1.147a.5.5 0 0 0 .708-.708l-2-2a.5.5 0 0 0-.708 0l-2 2a.5.5 0 1 0 .708.708L7.5 6.707V10.5a.5.5 0 0 0 .5.5z"/>

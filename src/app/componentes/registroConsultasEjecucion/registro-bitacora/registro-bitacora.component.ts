@@ -4,6 +4,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import { Actividades } from '../../planeacion/cronograma/actividades';
 import { DataServices } from 'src/app/servicios/data.services';
+import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-registro-bitacora',
@@ -23,8 +24,9 @@ export class RegistroBitacoraComponent implements OnInit {
   dias = [] = [1,2,3,4,5,6,7,8,9,0,11,12];
 
   actividadPrincipal: any = [];
-
   actividadSecundaria: any = [];
+  equipo: any = [];
+  empleados: any = [];
 
   arrayActividadSecundaria: any =[];
   numActividadP = 0;
@@ -53,6 +55,8 @@ export class RegistroBitacoraComponent implements OnInit {
 
   ngOnInit(): void {
     this.obtenerActividadPrincipales();
+    this.obtenerEquipos();
+    this.obtenerEmpleados();
   }
 
   crearActividad(){
@@ -70,12 +74,12 @@ export class RegistroBitacoraComponent implements OnInit {
     this.modal.open(contenido,{size: 'sm'});
   }
 
-  linkAsistencia(){
-    this.router.navigate(['registroyconsultasdeejecucion/bitacora/registroasistencia']);
+  cerrarModal() {
+    this.modal.dismissAll();
   }
 
-  linkMaquinariaEquipo(){
-    this.router.navigate(['maquinariaequipo/maquinariaequipo']);
+  linkAsistencia(){
+    this.router.navigate(['registroyconsultasdeejecucion/bitacora/registroasistencia']);
   }
 
   limpiarFormulario(){
@@ -116,6 +120,27 @@ export class RegistroBitacoraComponent implements OnInit {
           console.log(this.actividadSecundaria);          
         },
         (error) => console.error(error)
+      );
+    }
+
+    obtenerEquipos(){
+      this.dataServices.cargarEquipos().subscribe(
+        (res) => {
+          this.equipo = res;
+          console.log(this.equipo);
+        },
+        (error) => console.error(error)
+      );
+    }
+
+    obtenerEmpleados(){
+      this.dataServices.cargarEmpleados()
+      .subscribe(
+        res => {
+          this.empleados = res;
+          console.log(this.empleados);
+        },
+        error => console.error(error)
       );
     }
 
