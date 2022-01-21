@@ -78,10 +78,6 @@ export class RegistroBitacoraComponent implements OnInit {
     this.modal.dismissAll();
   }
 
-  linkAsistencia(){
-    this.router.navigate(['registroyconsultasdeejecucion/bitacora/registroasistencia']);
-  }
-
   limpiarFormulario(){
     this.nombreActividad = '';
     this.largo = '';
