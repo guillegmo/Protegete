@@ -29,6 +29,7 @@ export class CrearUsuarioComponent implements OnInit {
 
   ngOnInit(): void {
     this.obtenerUsuarios();
+    this.limpiarFormulario();
   }
 
   crearUsuario() {  
