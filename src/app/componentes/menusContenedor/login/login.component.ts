@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
     }else{
       this.mensaje = 'Usuario o Contraseña Incorrectos'
     }
-    if(this.usuario==='contratista' && this.password==='3'){
+    if(this.usuario==='contratista' && this.password==='4'){
       this.visible=true;
       this.log=false;
       this.mensaje = '';
