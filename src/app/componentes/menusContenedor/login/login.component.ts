@@ -29,8 +29,7 @@ export class LoginComponent implements OnInit {
       this.mensaje = '';
       this.router.navigate(['/principal']);      
     }else{
-      this.mensaje = 'Usuario o Contraseña Incorrectos'
-      
+      this.mensaje = 'Usuario o Contraseña Incorrectos'      
     }
     if(this.usuario==='interventor' && this.password==='2'){
       this.visible=true;
@@ -40,14 +39,13 @@ export class LoginComponent implements OnInit {
     }else{
       this.mensaje = 'Usuario o Contraseña Incorrectos'
     }
-    if(this.usuario==='contratista' && this.password==='4'){
+    if(this.usuario==='contratista' && this.password==='3'){
       this.visible=true;
       this.log=false;
       this.mensaje = '';
       this.router.navigate(['/principal']);
     }else{
-      this.mensaje = 'Usuario o Contraseña Incorrectos'
-     
+      this.mensaje = 'Usuario o Contraseña Incorrectos'     
     }
   }
   
